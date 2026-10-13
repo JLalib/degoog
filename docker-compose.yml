@@ -1,0 +1,16 @@
+services:
+  degoog:
+    image: ghcr.io/degoog-org/degoog:latest
+    volumes:
+      - ./data:/app/data
+    ports:
+      - "4444:4444"
+    environment:
+      - DEGOOG_SETTINGS_PASSWORDS=tu_password_seguro
+    restart: unless-stopped
+
+  valkey:
+    image: valkey/valkey:latest
+    volumes:
+      - ./valkey-data:/data
+    restart: unless-stopped
